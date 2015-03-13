@@ -10,48 +10,74 @@
   <body>
     <div id="map"></div>
 
-    <div class="container">
-      <div class="brand">
-        <img src="logo.svg" alt="TePetoMap" width="100">
+    <script type="infowindow/html" id="content-template">
+      <div class="container">
+        <div class="brand">
+          <img src="logo.svg" alt="TePetoMap" width="100">
+        </div>
+        <div class="MapTitle">
+          <h1>{{ title }}</h1>
+          <p>BY <a href="http://{{ username }}.cartodb.com/"><strong>{{ username }}</strong></a></p>
+        </div>
+        <dl class="MapMetadata">
+          <dt><strong>{{ mapviews }}</strong></dt>
+          <dd>MAPVIEWS</dd>
+          <dt><strong>{{ likes }}</strong></dt>
+          <dd>LIKES</dd>
+          <dt><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dt>
+          <dd>LOCATION</dd>
+        </dl>
       </div>
-      <div class="MapTitle">
-        <h1>THE SCAPE FROM ALCATRAZ</h1>
-        <p>BY <strong>PIENSAENPIXEL</strong></p>
-      </div>
-      <dl class="MapMetadata">
-        <dt><strong>32.403</strong></dt>
-        <dd>VISUALIZATIONS</dd>
-        <dt><strong>15</strong></dt>
-        <dd>SHARES</dd>
-        <dt><strong>32</strong></dt>
-        <dd>LIKES</dd>
-        <dt><strong>40,04ºN, 50.402ºS</strong></dt>
-        <dd>LOCATION</dd>
-      </dl>
-    </div>
-
-    <div class="refresh">
-      <a href="#">
-        <img src="refresh.svg" alt="Refresh">
-      </a>
-    </div>
+    </script>
 
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb.js"></script>
     <script>
       // js
       function main() {
-        cartodb.createVis('map', 'http://documentation.cartodb.com/api/v2/viz/7eb2096a-51d9-11e3-89a7-5404a6a683d5/viz.json', {
-          shareable: false,
-          title: false,
-          description: false,
-          search: false,
-          tiles_loader: true,
-          center_lat: 42,
-          center_lon: -3,
-          zoom: 6,
-          legends: false
+        var sql = new cartodb.SQL({ user: 'platform' });
+        sql.execute("SELECT url,count FROM top_viz")
+          .done(getMapData)
+          .error(function(errors) {
+            // errors contains a list of errors
+            console.log("errors:" + errors);
+          });
+      }
+
+      function getMapData(data) {
+        var url = data.rows[0].url;
+        var mapviews = data.rows[0].count;
+        var username = url.split('.')[0].replace('https://', '');
+        $.ajax({
+          url: url,
+          dataType: 'jsonp',
+          success: function(r) {
+            r.mapviews = mapviews;
+            r.username = username;
+            generateInfo(r);
+            generateMap(r);
+          }
         })
-        .done(function(vis, layers) {})
+      }
+
+      function generateInfo(d) {
+        var template = Mustache.compile($('#content-template').html());
+        $('body').append(
+          template({
+            title: d.title,
+            description: d.description,
+            username: d.username,
+            mapviews: d.mapviews,
+            likes: d.likes,
+            lon: '',
+            lat: ''
+          })
+        )
+      }
+
+      function generateMap(data) {
+        var a = cartodb.createVis('map', data, { title: false, description: false, shared: false })
+        .done(function(vis, layers) {
+        })
         .error(function(err) {
           console.log(err);
         });
@@ -60,6 +86,5 @@
       window.onload = main;
       // end
     </script>
-
   </body>
 </html>

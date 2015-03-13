@@ -21,6 +21,23 @@ strong {
   background-color: rgba(0, 0, 0, .9);
 }
 
+.cartodb-zoom,
+.cartodb-tiles-loader {
+  margin-left: 420px!important
+}
+
+.cartodb-tiles-loader .loader {
+  margin-left: 0!important;
+}
+
+.cartodb-timeslider {
+  left: 420px!important;
+}
+
+.cartodb-timeslider .slider-wrapper {
+  width: 282px!important;
+}
+
 .container {
   position: fixed;
   top: 0;
@@ -39,10 +56,18 @@ strong {
   .MapTitle h1 {
     font: 49px/52px 'Gotham Light';
     margin-bottom: 20px;
+    word-break: break-all;
   }
   .MapTitle p {
     font: 12px/18px 'Gotham Light';
     color: #999;
+  }
+  .MapTitle a {
+    text-transform: uppercase;
+    color: #999;
+  }
+  .MapTitle a:hover {
+    text-decoration: underline
   }
 
 .MapMetadata {
