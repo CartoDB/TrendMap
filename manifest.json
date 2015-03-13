@@ -1,0 +1,10 @@
+{
+  "name": "CartoDB peta map",
+  "manifest_version": 2,
+  "version": "0.0.1",
+  "description": "Would you like to know what CaroDB map is most visited?",
+  "permissions" : ["http://*.github.io/"],
+  "chrome_url_overrides" : {
+    "newtab": "newtab.html"
+  }
+}
