@@ -1,13 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>PetaMap - CartoDB highlighted map!</title>
-    <link rel="stylesheet" href="style.css" /> 
+    <link href="reset.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.12/themes/css/cartodb.css" /> 
   </head>
   <body>
     <div id="map"></div>
+
+    <div class="container">
+      <div class="brand">
+        <img src="logo.svg" alt="TePetoMap" width="100">
+      </div>
+      <div class="MapTitle">
+        <h1>THE SCAPE FROM ALCATRAZ</h1>
+        <p>BY <strong>PIENSAENPIXEL</strong></p>
+      </div>
+      <dl class="MapMetadata">
+        <dt><strong>32.403</strong></dt>
+        <dd>VISUALIZATIONS</dd>
+        <dt><strong>15</strong></dt>
+        <dd>SHARES</dd>
+        <dt><strong>32</strong></dt>
+        <dd>LIKES</dd>
+        <dt><strong>40,04ºN, 50.402ºS</strong></dt>
+        <dd>LOCATION</dd>
+      </dl>
+    </div>
+
+    <div class="refresh">
+      <a href="#">
+        <img src="refresh.svg" alt="Refresh">
+      </a>
+    </div>
+
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb.js"></script>
     <script>
       // js
@@ -32,5 +60,6 @@
       window.onload = main;
       // end
     </script>
+
   </body>
 </html>

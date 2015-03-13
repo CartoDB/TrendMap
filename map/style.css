@@ -1,9 +1,89 @@
-html,
-body,
+@font-face {
+  font-family: 'Gotham Light';
+  src: url('fonts/Gotham-XLight.ttf')  format('truetype'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Gotham Medium';
+  src: url('fonts/Gotham-Medium.ttf')  format('truetype'); /* Legacy iOS */
+}
+
+strong {
+  font-family: 'Gotham Medium';
+}
+
 #map {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .9);
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 400px;
+  background: rgba(0, 0, 0, .6);
+  padding: 40px;
+  color: #fff;
+}
+
+.MapTitle {
+  position: absolute;
+  bottom: 300px;
+}
+  .MapTitle h1 {
+    font: 49px/52px 'Gotham Light';
+    margin-bottom: 20px;
+  }
+  .MapTitle p {
+    font: 12px/18px 'Gotham Light';
+    color: #999;
+  }
+
+.MapMetadata {
+  font: 12px/36px 'Gotham Light';
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  padding-top: 33px;
+}
+  .MapMetadata:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 1px;
+    background: rgba(255, 255, 255, .2);
+  }
+
+.MapMetadata dt {
+  display: inline;
   margin: 0;
-  padding: 0;
+}
+
+.MapMetadata dd {
+  display: inline;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.MapMetadata dd:after {
+  content: '\A';
+  white-space: pre;
+}
+
+.brand {
+  margin-bottom: 40px;
+}
+
+.refresh {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
 }
