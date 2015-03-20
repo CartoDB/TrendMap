@@ -36,15 +36,9 @@
           </dl>
           <div class="MapRelations">
             <ul>
-              <li>
-                <a href="#" class="icon"><img src="twitter.svg" /></a>
-              </li>
-              <li class="ButtonInner">
-                <a href="#" class="button"><strong>VIEW ON CARTODB</strong></a>
-              </li>
-              <li>
-                <a href="#" class="icon"><img src="refresh.svg" /></a>
-              </li>
+              <li><a href="https://twitter.com/share?url=http://xavij.am/PetaMap/map&text=Most visited CartoDB map last hour" class="icon"><img src="twitter.svg" /></a></li>
+              <li class="ButtonInner"><a href="{{ link }}" class="button"><strong>VIEW ON CARTODB</strong></a></li>
+              <li><a href="." class="icon"><img src="refresh.svg" /></a></li>
             </ul>
           </div>
         </div>
@@ -56,7 +50,7 @@
       // js
       function main() {
         var sql = new cartodb.SQL({ user: 'platform' });
-        sql.execute("SELECT url,count FROM top_viz")
+        sql.execute("SELECT url,count,username,avatar FROM top_viz ORDER BY count DESC LIMIT 1")
           .done(getMapData)
           .error(function(errors) {
             // errors contains a list of errors
@@ -81,14 +75,16 @@
       }
 
       function generateInfo(d) {
+        var c = $.parseJSON(d.center);
         var info = {
           title: d.title,
           description: d.description,
           username: d.username,
           mapviews: d.mapviews,
           likes: d.likes,
-          lon: '',
-          lat: ''
+          link: 'http://' + d.username + '.cartodb.com/viz/' + d.id + '/public_map',
+          lon: c[0] && c[0].toFixed(1),
+          lat: c[1] && c[1].toFixed(1)
         };
         var html = Mustache.render($('#content-template').html(), info);
         $('body').append(html);
