@@ -76,15 +76,15 @@
       }
 
       function generateInfo(d) {
-        var c = d.center;
+        var c = $.parseJSON(d.center);
         var info = {
           title: d.title,
           description: d.description,
           username: d.username,
           mapviews: d.mapviews,
           likes: d.likes,
-          lon: c[0],
-          lat: c[1]
+          lon: c[0] && c[0].toFixed(1),
+          lat: c[1] && c[1].toFixed(1)
         };
         var html = Mustache.render($('#content-template').html(), info);
         $('body').append(html);
