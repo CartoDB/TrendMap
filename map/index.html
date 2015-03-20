@@ -30,15 +30,9 @@
           </dl>
           <div class="MapRelations">
             <ul>
-              <li>
-                <a href="#" class="icon"><img src="twitter.svg" /></a>
-              </li>
-              <li class="ButtonInner">
-                <a href="#" class="button"><strong>VIEW ON CARTODB</strong></a>
-              </li>
-              <li>
-                <a href="#" class="icon"><img src="refresh.svg" /></a>
-              </li>
+              <li><a href="https://twitter.com/share?url=http://xavij.am/PetaMap/map&text=Most visited CartoDB map last hour" class="icon"><img src="twitter.svg" /></a></li>
+              <li class="ButtonInner"><a href="{{ link }}" class="button"><strong>VIEW ON CARTODB</strong></a></li>
+              <li><a href="." class="icon"><img src="refresh.svg" /></a></li>
             </ul>
           </div>
         </div>
@@ -83,6 +77,7 @@
           username: d.username,
           mapviews: d.mapviews,
           likes: d.likes,
+          link: 'http://' + d.username + '.cartodb.com/viz/' + d.id + '/public_map',
           lon: c[0] && c[0].toFixed(1),
           lat: c[1] && c[1].toFixed(1)
         };
