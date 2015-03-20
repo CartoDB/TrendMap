@@ -1,3 +1,7 @@
+body {
+  background: rgba(0, 0, 0, .9);
+}
+
 @font-face {
   font-family: 'Gotham Light';
   src: url('fonts/Gotham-XLight.ttf')  format('truetype'); /* Legacy iOS */
@@ -18,7 +22,6 @@ strong {
   right: 0;
   bottom: 0;
   left: 400px;
-  background-color: rgba(0, 0, 0, .9);
 }
 
 
@@ -153,3 +156,18 @@ strong {
   right: 40px;
   bottom: 40px;
 }
+
+.Actions {
+  position: absolute;
+  top: 40px;
+  right: 0;
+}
+
+.ActionsInner {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #30302F;
+}
+
+
