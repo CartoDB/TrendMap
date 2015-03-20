@@ -13,20 +13,36 @@
     <script type="infowindow/html" id="content-template">
       <div class="container">
         <div class="brand">
-          <img src="logo.svg" alt="TePetoMap" width="100">
+          <img src="logo.svg" alt="TePetoMap" width="120">
         </div>
-        <div class="MapTitle">
-          <h1>{{ title }}</h1>
-          <p>BY <a href="http://{{ username }}.cartodb.com/"><strong>{{ username }}</strong></a></p>
+        <div class="MapInfo">
+          <div class="MapTitle">
+            <h1>{{ title }}</h1>
+            <p>BY <a href="http://{{ username }}.cartodb.com/"><strong>{{ username }}</strong></a></p>
+          </div>
+          <dl class="MapMetadata">
+            <dt><strong>{{ mapviews }}</strong></dt>
+            <dd>MAPVIEWS</dd>
+            <dt><strong>{{ likes }}</strong></dt>
+            <dd>LIKES</dd>
+            <dt><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dt>
+            <dd>LOCATION</dd>
+          </dl>
+          <div class="MapRelations">
+            <ul>
+              <li>
+                <a href="#" class="icon"><img src="twitter.svg" /></a>
+              </li>
+              <li class="ButtonInner">
+                <a href="#" class="button"><strong>VIEW ON CARTODB</strong></a>
+              </li>
+              <li>
+                <a href="#" class="icon"><img src="refresh.svg" /></a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <dl class="MapMetadata">
-          <dt><strong>{{ mapviews }}</strong></dt>
-          <dd>MAPVIEWS</dd>
-          <dt><strong>{{ likes }}</strong></dt>
-          <dd>LIKES</dd>
-          <dt><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dt>
-          <dd>LOCATION</dd>
-        </dl>
+
       </div>
     </script>
 

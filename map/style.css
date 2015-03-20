@@ -17,46 +17,28 @@ strong {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 400px;
   background-color: rgba(0, 0, 0, .9);
 }
 
-.cartodb-zoom,
-.cartodb-tiles-loader {
-  margin-left: 420px!important
-}
-
-.cartodb-tiles-loader .loader {
-  margin-left: 0!important;
-}
-
-.cartodb-timeslider {
-  left: 420px!important;
-}
-
-.cartodb-timeslider .slider-wrapper {
-  width: 282px!important;
-}
 
 .container {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  width: 400px;
-  background: rgba(0, 0, 0, .6);
+  width: 320px;
+  background: #30302F;
   padding: 40px;
   color: #fff;
 }
 
-.MapTitle {
-  position: absolute;
-  bottom: 300px;
-}
+
   .MapTitle h1 {
     font: 49px/52px 'Gotham Light';
     margin-bottom: 20px;
     word-break: break-all;
+    margin-right: 40px;s
   }
   .MapTitle p {
     font: 12px/18px 'Gotham Light';
@@ -70,12 +52,17 @@ strong {
     text-decoration: underline
   }
 
-.MapMetadata {
-  font: 12px/36px 'Gotham Light';
+
+.MapInfo {
   position: absolute;
   bottom: 40px;
   left: 40px;
-  padding-top: 33px;
+}
+.MapMetadata {
+  font: 12px/36px 'Gotham Light';
+  padding: 30px 0;
+  position: relative;
+  margin: 30px 0;
 }
   .MapMetadata:before {
     content: "";
@@ -86,12 +73,68 @@ strong {
     height: 1px;
     background: rgba(255, 255, 255, .2);
   }
+  .MapMetadata:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 1px;
+    background: rgba(255, 255, 255, .2);
+  }
+
 
 .MapMetadata dt {
   display: inline;
   margin: 0;
 }
 
+.icon {
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: block;
+  line-height: 49px;
+  text-align: center;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+  .icon:hover {
+    border: 2px solid rgba(255, 255, 255, .5);
+  }
+  .icon img {
+    display: inline-block;
+  }
+
+.button {
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 50px;
+  height: 40px;
+  display: block;
+  font: 12px/40px 'Gotham Light';
+  padding: 0 30px;
+  text-align: center;
+  color: #fff;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+  .button:hover {
+    border: 2px solid rgba(255, 255, 255, .5);
+  }
+
+.MapRelations {
+  margin-right: 40px;
+}
+
+.MapRelations li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -5px;
+}
+.MapRelations li.ButtonInner {
+  margin: 0 23px;
+}
 .MapMetadata dd {
   display: inline;
   margin: 0;
@@ -103,9 +146,7 @@ strong {
   white-space: pre;
 }
 
-.brand {
-  margin-bottom: 40px;
-}
+
 
 .refresh {
   position: absolute;
