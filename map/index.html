@@ -35,7 +35,7 @@
       // js
       function main() {
         var sql = new cartodb.SQL({ user: 'platform' });
-        sql.execute("SELECT url,count FROM top_viz")
+        sql.execute("SELECT url,count,username,avatar FROM top_viz ORDER BY count DESC LIMIT 1")
           .done(getMapData)
           .error(function(errors) {
             // errors contains a list of errors
@@ -60,14 +60,16 @@
       }
 
       function generateInfo(d) {
+        console.log(d.center);
+        var c = d.center;
         var info = {
           title: d.title,
           description: d.description,
           username: d.username,
           mapviews: d.mapviews,
           likes: d.likes,
-          lon: '',
-          lat: ''
+          lon: c[0],
+          lat: c[1]
         };
         var html = Mustache.render($('#content-template').html(), info);
         $('body').append(html);
