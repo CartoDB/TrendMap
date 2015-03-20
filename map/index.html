@@ -60,18 +60,17 @@
       }
 
       function generateInfo(d) {
-        var template = Mustache.compile($('#content-template').html());
-        $('body').append(
-          template({
-            title: d.title,
-            description: d.description,
-            username: d.username,
-            mapviews: d.mapviews,
-            likes: d.likes,
-            lon: '',
-            lat: ''
-          })
-        )
+        var info = {
+          title: d.title,
+          description: d.description,
+          username: d.username,
+          mapviews: d.mapviews,
+          likes: d.likes,
+          lon: '',
+          lat: ''
+        };
+        var html = Mustache.render($('#content-template').html(), info);
+        $('body').append(html);
       }
 
       function generateMap(data) {
