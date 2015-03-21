@@ -4,10 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>PetaMap - CartoDB highlighted map!</title>
     <link href="reset.css" rel="stylesheet" type="text/css" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.12/themes/css/cartodb.css" /> 
+    <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <div class="Loader">
+      <div class="Spinner"></div>
+      <div class="Loader-message">Loading map...</div>
+    </div>
+
     <div id="map"></div>
 
     <script type="infowindow/html" id="content-template">
@@ -23,8 +28,10 @@
           <dl class="MapMetadata">
             <dt><strong>{{ mapviews }}</strong></dt>
             <dd>MAPVIEWS</dd>
+            {{#likes}}
             <dt><strong>{{ likes }}</strong></dt>
             <dd>LIKES</dd>
+            {{/likes}}
             <dt><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dt>
             <dd>LOCATION</dd>
           </dl>
@@ -42,7 +49,8 @@
 
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb.js"></script>
     <script>
-      // js
+      var RELOAD_TIME = 1200000; // 20 min
+
       function main() {
         var sql = new cartodb.SQL({ user: 'platform' });
         sql.execute("SELECT url,count,username,avatar FROM top_viz ORDER BY count DESC LIMIT 1")
@@ -65,6 +73,8 @@
             r.username = username;
             generateInfo(r);
             generateMap(r);
+            startRefresh();
+            hideSpinner();
           }
         })
       }
@@ -75,8 +85,8 @@
           title: d.title,
           description: d.description,
           username: d.username,
-          mapviews: d.mapviews,
-          likes: d.likes,
+          mapviews: formatNumber(d.mapviews),
+          likes: d.likes && formatNumber(d.likes),
           link: 'http://' + d.username + '.cartodb.com/viz/' + d.id + '/public_map',
           lon: c[0] && c[0].toFixed(1),
           lat: c[1] && c[1].toFixed(1)
@@ -87,11 +97,29 @@
 
       function generateMap(data) {
         var a = cartodb.createVis('map', data, { title: false, description: false, shared: false })
-        .done(function(vis, layers) {
-        })
+        .done(function(vis, layers) {})
         .error(function(err) {
           console.log(err);
         });
+      }
+
+      function hideSpinner() {
+        $('.Spinner').fadeOut('fast');
+      }
+      
+      function startRefresh() {
+        setInterval(function(){
+          if (!$('#map').is(':hover')) {
+            location.reload()  
+          }
+        }, RELOAD_TIME);
+      }
+
+      function formatNumber(x) {
+        if (!x) return "0";
+        var parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return parts.join(".");
       }
  
       window.onload = main;
