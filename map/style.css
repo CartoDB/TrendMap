@@ -315,3 +315,9 @@ html {
     -khtml-transform: rotate(360deg);
   }
 }
+
+@media (max-height: 750px) {
+  .MapTitle h1 {
+    font: 40px/45px 'Gotham Light';
+  } 
+}
