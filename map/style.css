@@ -99,7 +99,7 @@ html {
   margin: 0;
 }
 
-.icon {
+.container .icon {
   display: block;
   width: 40px;
   height: 40px;
@@ -110,14 +110,14 @@ html {
   -webkit-transition: all .3s ease-in;
           transition: all .3s ease-in;
 }
-.icon:hover {
+.container .icon:hover {
   border: 2px solid rgba(255, 255, 255, .5);
 }
-.icon img {
+.container .icon img {
   display: inline-block;
 }
 
-.button {
+.container .button {
   display: block;
   height: 40px;
   padding: 0 30px;
@@ -129,7 +129,7 @@ html {
   -webkit-transition: all .3s ease-in;
           transition: all .3s ease-in;
 }
-.button:hover {
+.container .button:hover {
   border: 2px solid rgba(255, 255, 255, .5);
 }
 
