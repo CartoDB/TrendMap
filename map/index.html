@@ -26,19 +26,19 @@
     <script type="infowindow/html" id="content-template">
       <div class="container">
         <div class="brand">
-          <img src="logo.svg" alt="TePetoMap" width="120">
+          <img src="logo.svg" alt="TrendMap" width="120">
         </div>
         <div class="MapInfo">
           <div class="MapTitle">
             <h1>
-              <a href="{{ link }}">
+              <a href="{{ link }}" target="_blank">
                 <span>{{ title }}</span>
                 <div class="MapTitle-tooltip">
                   {{ title }}
                 </div>
               </a>
             </h1>
-            <p>BY <a href="http://{{ username }}.cartodb.com/"><strong>{{ username }}</strong></a></p>
+            <p>BY <a href="http://{{ username }}.cartodb.com/" target="_blank"><strong>{{ username }}</strong></a></p>
           </div>
           <dl class="MapMetadata">
             <dt><strong>{{ mapviews }}</strong></dt>
@@ -53,7 +53,7 @@
           <div class="MapRelations">
             <ul>
               <li><a href="https://twitter.com/share?url=http://xavij.am/PetaMap/map&text=Most visited CartoDB map last hour" class="icon"><img src="twitter.svg" /></a></li>
-              <li class="ButtonInner"><a href="{{ link }}" class="button"><strong>VIEW ON CARTODB</strong></a></li>
+              <li class="ButtonInner"><a href="{{ link }}" target="_blank" class="button"><strong>VIEW ON CARTODB</strong></a></li>
               <li><a href="." class="icon"><img src="refresh.svg" /></a></li>
             </ul>
           </div>
