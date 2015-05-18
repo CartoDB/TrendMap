@@ -1,7 +1,7 @@
 {
   "name": "TrendMap",
   "manifest_version": 2,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Would you like to know what CartoDB map is most visited lately?",
   "icons": { "16": "16.png", "32": "32.png", "64": "64.png", "128": "128.png" },
   "permissions" : ["http://*.github.io/"],
