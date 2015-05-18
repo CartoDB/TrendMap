@@ -139,6 +139,13 @@ html {
   margin: 0;
 }
 
+.MapMetadata dd a {
+  color: white;
+}
+.MapMetadata dd a:hover {
+  text-decoration: underline;
+}
+
 .container .icon {
   display: block;
   width: 40px;

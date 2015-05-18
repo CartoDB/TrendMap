@@ -14,16 +14,9 @@
       <div class="Loader-message">Loading map...</div>
     </div>
 
-    <!--
-    <div class="Actions">
-      <div class="ActionsInner show">
-        hola
-      </div>
-    </div>-->
-
     <div id="map"></div>
 
-    <script type="infowindow/html" id="content-template">
+    <script type="template/html" id="content-template">
       <div class="container">
         <div class="brand">
           <img src="logo.svg" alt="TrendMap" width="120">
@@ -41,9 +34,12 @@
             <p>BY <a href="http://{{ username }}.cartodb.com/" target="_blank"><strong>{{ username }}</strong></a></p>
           </div>
           <dl class="MapMetadata">
+            {{#referrers}}
+              <dd>AS SEEN ON <strong><a target="_blank" href="{{ referrers }}">HERE</a></strong></dd>
+            {{/referrers}}
             {{#likes}}
-            <dt><strong>{{ likes }}</strong></dt>
-            <dd>LIKES</dd>
+              <dt><strong>{{ likes }}</strong></dt>
+              <dd>LIKES</dd>
             {{/likes}}
             <dt><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dt>
             <dd>LOCATION</dd>
@@ -62,10 +58,14 @@
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb.js"></script>
     <script>
       var RELOAD_TIME = 1200000; // 20 min
+      var excludedReferrers = [
+        "-",
+        "http://xavij.am/TrendMap/map/"
+      ];
 
       function main() {
         var sql = new cartodb.SQL({ user: 'platform' });
-        sql.execute("SELECT url,count,username,avatar FROM top_viz ORDER BY count DESC LIMIT 1")
+        sql.execute("SELECT url,count,username,avatar,referrers FROM top_viz ORDER BY count DESC LIMIT 1")
           .done(getMapData)
           .error(function(errors) {
             // errors contains a list of errors
@@ -75,14 +75,13 @@
 
       function getMapData(data) {
         var url = data.rows[0].url;
-        var mapviews = data.rows[0].count;
         var username = url.split('.')[0].replace('https://', '');
         $.ajax({
           url: url,
           dataType: 'jsonp',
           success: function(r) {
-            r.mapviews = mapviews;
             r.username = username;
+            r.referrers = data.rows[0].referrers;
             generateInfo(r);
             generateMap(r);
             startRefresh();
@@ -97,14 +96,23 @@
           title: d.title,
           description: d.description,
           username: d.username,
-          mapviews: formatNumber(d.mapviews),
           likes: d.likes && formatNumber(d.likes),
+          referrers: getReferrer(d.referrers),
           link: 'http://' + d.username + '.cartodb.com/viz/' + d.id + '/public_map',
           lon: c[0] && c[0].toFixed(1),
           lat: c[1] && c[1].toFixed(1)
         };
         var html = Mustache.render($('#content-template').html(), info);
         $('body').append(html);
+      }
+
+      function getReferrer(referrers) {
+        if (referrers && referrers.length > 0) {
+          return _.find(_.shuffle(referrers), function(referrer){
+            return !_.contains(excludedReferrers, referrer);
+          });
+        }
+        return ""
       }
 
       function generateMap(data) {
