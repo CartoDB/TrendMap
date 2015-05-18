@@ -103,7 +103,7 @@
       }
 
       function generateMap(data) {
-        var a = cartodb.createVis('map', data, { title: false, description: false, shared: false })
+        var a = cartodb.createVis('map', data, { title: false, description: false })
         .done(function(vis, layers) {})
         .error(function(err) {
           console.log(err);
