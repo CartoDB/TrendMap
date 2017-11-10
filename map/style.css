@@ -74,10 +74,11 @@ html {
   color: #747D82;
   font: 10px/14px 'Open Sans';
   display: flex;
+  margin: 0 0 20px 0;
 }
 
 .MapMetadata dt {
-  margin: 0 8px 20px 0
+  margin: 0 4px 0 0
 }
 
 .MapMetadata dd a {
@@ -90,6 +91,7 @@ html {
 .MapMetadata dd {
   margin: 0;
   text-transform: uppercase;
+  color: #2D3C43;
 }
 
 
