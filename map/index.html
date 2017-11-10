@@ -29,18 +29,18 @@
             <h2>Tokyo is changing quite a lot lately so we are analyzing the main drivers of growth and change in the last yr.{{ description }}</h2>
           </div><!-- MapTitle-->
 
-          <dl class="MapMetadata">
-            {{#referrers}}
-              <dd>AS SEEN ON <strong><a target="_blank" href="{{ referrers }}">THIS PAGE</a></strong></dd>
-            {{/referrers}}
-            {{#likes}}
-              <dt><strong>{{ likes }}</strong></dt>
-              <dd>LIKES</dd>
-            {{/likes}}
-            <dt><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dt>
-            <dd>LOCATION</dd>
-          </dl>
-          <a target="_blank" href="https://twitter.com/share?url=http://cartodb.github.io/TrendMap/map&text=Most visited CARTO map last hour" class="icon"><img src="twitter.svg" /></a>
+          <div class="MapMetadataInfo">
+            <dl class="MapMetadata">
+              {{#referrers}}
+                <dt>AS SEEN ON</dt><dd><a target="_blank" href="{{ referrers }}">THIS PAGE</a></strong></dd>
+              {{/referrers}}
+            </dl>
+            <dl class="MapMetadata">
+              <dt>LOCATION</dt>
+              <dd><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dd>
+            </dl>
+            <a target="_blank" href="https://twitter.com/share?url=http://cartodb.github.io/TrendMap/map&text=Most visited CARTO map last hour" class="icon"><img src="twitter.svg" /></a>
+          </div>
         </div>
 
 
