@@ -2,9 +2,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>TrendMap - CartoDB highlighted map!</title>
+    <title>TrendMap - CARTO Builder highlighted map!</title>
     <link href="reset.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" /> 
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -31,7 +30,7 @@
                 </div>
               </a>
             </h1>
-            <p>BY <a href="http://{{ username }}.cartodb.com/" target="_blank"><strong>{{ username }}</strong></a></p>
+            <p>BY <a href="http://{{ username }}.carto.com/" target="_blank"><strong>{{ username }}</strong></a></p>
           </div>
           <dl class="MapMetadata">
             {{#referrers}}
@@ -46,8 +45,8 @@
           </dl>
           <div class="MapRelations">
             <ul>
-              <li><a target="_blank" href="https://twitter.com/share?url=http://xavij.am/TrendMap/map&text=Most visited CartoDB map last hour" class="icon"><img src="twitter.svg" /></a></li>
-              <li class="ButtonInner"><a href="{{ link }}" target="_blank" class="button"><strong>VIEW ON CARTODB</strong></a></li>
+              <li><a target="_blank" href="https://twitter.com/share?url=http://cartodb.github.io/TrendMap/map&text=Most visited CARTO map last hour" class="icon"><img src="twitter.svg" /></a></li>
+              <li class="ButtonInner"><a href="{{ link }}" target="_blank" class="button"><strong>VIEW ON CARTO</strong></a></li>
               <li><a href="." class="icon"><img src="refresh.svg" /></a></li>
             </ul>
           </div>
@@ -55,12 +54,11 @@
       </div>
     </script>
 
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script>
       var RELOAD_TIME = 1200000; // 20 min
       var excludedReferrers = [
         "-",
-        "http://xavij.am/TrendMap/map/"
+        "http://cartodb.github.io/TrendMap/map/"
       ];
 
       function main() {
@@ -98,7 +96,7 @@
           username: d.username,
           likes: d.likes && formatNumber(d.likes),
           referrers: getReferrer(d.referrers),
-          link: 'http://' + d.username + '.cartodb.com/viz/' + d.id + '/public_map',
+          link: 'http://' + d.username + '.carto.com/viz/' + d.id + '/public_map',
           lon: c[0] && c[0].toFixed(1),
           lat: c[1] && c[1].toFixed(1)
         };
