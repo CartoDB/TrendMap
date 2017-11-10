@@ -7,13 +7,14 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-  
     <div class="Loader">
       <div class="Spinner"></div>
       <div class="Loader-message">Loading map...</div>
     </div>
 
     <div id="map"></div>
+
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 
     <script type="template/html" id="content-template">
       <div class="container">
@@ -96,7 +97,7 @@
           username: d.username,
           likes: d.likes && formatNumber(d.likes),
           referrers: getReferrer(d.referrers),
-          link: 'http://' + d.username + '.carto.com/viz/' + d.id + '/public_map',
+          link: 'http://' + d.username + '.carto.com/builder/' + d.id + '/embed',
           lon: c[0] && c[0].toFixed(1),
           lat: c[1] && c[1].toFixed(1)
         };
@@ -114,11 +115,11 @@
       }
 
       function generateMap(data) {
-        var a = cartodb.createVis('map', data, { title: false, description: false })
-        .done(function(vis, layers) {})
-        .error(function(err) {
-          console.log(err);
-        });
+        var $iframe = $('<iframe>')
+          .attr('src', 'http://' + data.username + '.carto.com/builder/' + data.id + '/embed')
+          .attr('width', '100%')
+          .attr('height', '100%');
+        $('#map').append($iframe);
       }
 
       function hideSpinner() {
