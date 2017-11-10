@@ -1,24 +1,6 @@
-body {
-  background: rgba(0, 0, 0, .9);
-}
-
-@font-face {
-  src: url('fonts/Gotham-XLight.ttf')  format('truetype'); /* Legacy iOS */
-  font-family: 'Gotham Light';
-}
-
-@font-face {
-  src: url('fonts/Gotham-Medium.ttf')  format('truetype'); /* Legacy iOS */
-  font-family: 'Gotham Medium';
-}
-
-strong {
-  font-family: 'Gotham Medium';
-}
-
 body,
 html {
-  background: #30302f;
+  background: #F2F6F9;
 }
 
 #map {
@@ -26,93 +8,82 @@ html {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 400px;
-  background: #30302f;
+  left: 420px;
 }
 
-.container {
+.Container {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  width: 320px;
+  width: 420px;
   padding: 40px;
-  color: #fff;
-  background: #30302f;
   min-height: 495px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
 }
-
 
 .MapTitle {
-  position: relative;
+ padding: 40px 0;
 }
+  .MapTitle h1 span{
+    margin-right: 40px;
+    margin-bottom: 20px;
+    font: 49px/52px 'Montserrat';
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .MapTitle p {
+    font: 12px/18px 'Montserrat';
+  }
+  .MapTitle a {
+    text-decoration: none;
+  }
+  .MapTitle a:hover {
+    color: rgba(255, 255, 255, .8);
+  }
+  .MapTitle a:hover .MapTitle-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.MapTitle h1 span{
-  margin-right: 40px;
-  margin-bottom: 20px;
-  font: 49px/52px 'Gotham Light';
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.MapTitle p {
-  font: 12px/18px 'Gotham Light';
-  color: #999;
-}
-.MapTitle a {
-  color: #fff;
-  text-decoration: none;
-}
-.MapTitle a:hover {
-  color: rgba(255, 255, 255, .8);
-}
-.MapTitle a:hover .MapTitle-tooltip {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-
-.MapTitle-tooltip {
-  background: rgba(0, 0, 0, .8);
-  padding: 14px;
-  border-radius: 4px;
-  color: #fff;
-  font: 12px/22px 'Gotham Light';
-  position: absolute;
-  top: -60px;
-  max-width: 250px;
-  text-align: center;
-  font-weight: bold;
-  opacity: 0;
-  transition: all .3s ease-out;
-  transform: translateY(10px)
-}
+  .MapTitle-tooltip {
+    background: rgba(0, 0, 0, .8);
+    padding: 14px;
+    border-radius: 4px;
+    color: #fff;
+    font: 12px/22px 'Montserrat';
+    position: absolute;
+    top: -60px;
+    max-width: 250px;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: all .3s ease-out;
+    transform: translateY(10px)
+  }
 
 
-.MapTitle-tooltip:before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border: 8px solid transparent;
-  border-top: 8px solid rgba(0, 0, 0, .8);
-  bottom: -16px;
-  left: 50%;
-  margin-left: -16px;
-}
+  .MapTitle-tooltip:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top: 8px solid rgba(0, 0, 0, .8);
+    bottom: -16px;
+    left: 50%;
+    margin-left: -16px;
+  }
 
-.MapInfo {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-}
 .MapMetadata {
   position: relative;
   padding: 30px 0;
   margin: 30px 0;
-  font: 12px/36px 'Gotham Light';
+  font: 12px/36px 'Montserrat';
 }
 .MapMetadata:before {
   position: absolute;
@@ -146,7 +117,7 @@ html {
   text-decoration: underline;
 }
 
-.container .icon {
+.icon {
   display: block;
   width: 40px;
   height: 40px;
@@ -157,51 +128,49 @@ html {
   -webkit-transition: all .3s ease-in;
           transition: all .3s ease-in;
 }
-.container .icon:hover {
-  border: 2px solid rgba(255, 255, 255, .5);
-}
-.container .icon img {
-  display: inline-block;
-}
+  .icon:hover {
+    border: 2px solid rgba(255, 255, 255, .5);
+  }
+  .icon img {
+    display: inline-block;
+  }
 
-.container .button {
+.button {
   display: block;
   height: 40px;
   padding: 0 30px;
   font: 12px/40px 'Gotham Light';
-  color: #fff;
   text-align: center;
   border: 2px solid rgba(255, 255, 255, .2);
   border-radius: 50px;
   -webkit-transition: all .3s ease-in;
           transition: all .3s ease-in;
 }
-.container .button:hover {
-  border: 2px solid rgba(255, 255, 255, .5);
-}
+  .button:hover {
+    border: 2px solid rgba(255, 255, 255, .5);
+  }
 
 .MapRelations {
   margin-right: 40px;
 }
+  .MapRelations li {
+    display: inline-block;
+    margin-left: -5px;
+    vertical-align: middle;
+  }
+  .MapRelations li.ButtonInner {
+    margin: 0 23px;
+  }
 
-.MapRelations li {
-  display: inline-block;
-  margin-left: -5px;
-  vertical-align: middle;
-}
-.MapRelations li.ButtonInner {
-  margin: 0 23px;
-}
 .MapMetadata dd {
   display: inline;
   margin: 0;
   text-transform: uppercase;
 }
-
-.MapMetadata dd:after {
-  white-space: pre;
-  content: '\A';
-}
+  .MapMetadata dd:after {
+    white-space: pre;
+    content: '\A';
+  }
 
 .refresh {
   position: absolute;

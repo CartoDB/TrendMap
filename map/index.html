@@ -3,6 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>TrendMap - CARTO Builder highlighted map!</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700|Open+Sans:300,400,600" rel="stylesheet">
     <link href="reset.css" rel="stylesheet" type="text/css" />
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
@@ -17,9 +18,11 @@
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 
     <script type="template/html" id="content-template">
-      <div class="container">
-        <div class="brand">
-          <img src="logo.svg" alt="TrendMap" width="240">
+      <div class="Container">
+        <div class="Header">
+          <div class="brand">
+            <img src="logo.svg" alt="TrendMap" width="200">
+          </div>
         </div>
         <div class="MapInfo">
           <div class="MapTitle">
@@ -32,7 +35,7 @@
               </a>
             </h1>
             <p>BY <a href="http://{{ username }}.carto.com/" target="_blank"><strong>{{ username }}</strong></a></p>
-          </div>
+          </div><!-- MapTitle-->
           <dl class="MapMetadata">
             {{#referrers}}
               <dd>AS SEEN ON <strong><a target="_blank" href="{{ referrers }}">THIS PAGE</a></strong></dd>
@@ -52,6 +55,7 @@
             </ul>
           </div>
         </div>
+
       </div>
     </script>
 

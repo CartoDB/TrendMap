@@ -67,5 +67,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+* {
+  box-sizing: border-box;
+}
 
 
