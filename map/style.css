@@ -28,7 +28,7 @@ html {
  padding: 40px 0;
 }
   .MapTitle h1 {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     font: 26px/34px 'Montserrat';
     color: #2D3C43;
     display: -webkit-box;
@@ -41,8 +41,14 @@ html {
     font: 16px/22px 'Open Sans';
   }
   .MapTitle p {
-    font: 400 12px/18px 'Montserrat';
+    font: 300 10px/14px OpenSans;
     color: #747D82;
+    letter-spacing: 0;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .MapTitle p a {
+    color: #1181FB;
   }
   .MapTitle a {
     text-decoration: none;
@@ -51,7 +57,6 @@ html {
 .MapMetadata {
   position: relative;
   padding: 30px 0;
-  margin: 30px 0;
   font: 12px/36px 'Montserrat';
 }
 .MapMetadata:before {
@@ -61,17 +66,9 @@ html {
   width: 70px;
   height: 1px;
   content: '';
-  background: rgba(255, 255, 255, .2);
+  background: #DDDDDD;
 }
-.MapMetadata:after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 70px;
-  height: 1px;
-  content: '';
-  background: rgba(255, 255, 255, .2);
-}
+
 
 
 .MapMetadata dt {
@@ -79,12 +76,24 @@ html {
   margin: 0;
 }
 
-.MapMetadata dd a {
-  color: white;
-}
 .MapMetadata dd a:hover {
   text-decoration: underline;
 }
+
+
+.MapMetadata dd {
+  display: inline;
+  margin: 0;
+  text-transform: uppercase;
+  color: #747D82;
+  font: 12px/16px 'Open Sans';
+}
+  .MapMetadata dd:after {
+    white-space: pre;
+    content: '\A';
+  }
+
+
 
 .icon {
   display: block;
@@ -134,15 +143,6 @@ html {
     margin: 0 23px;
   }
 
-.MapMetadata dd {
-  display: inline;
-  margin: 0;
-  text-transform: uppercase;
-}
-  .MapMetadata dd:after {
-    white-space: pre;
-    content: '\A';
-  }
 
 .refresh {
   position: absolute;
