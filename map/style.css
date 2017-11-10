@@ -29,16 +29,12 @@ html {
 }
   .MapTitle h1 {
     margin-bottom: 16px;
-    font: 26px/34px 'Montserrat';
+    font: 26px/34px 'Open Sans';
     color: #2D3C43;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-  .MapTitle h2 {
-    color: #747D82;
-    font: 16px/22px 'Open Sans';
   }
   .MapTitle p {
     font: 300 10px/14px 'Open Sans';
@@ -47,6 +43,16 @@ html {
     margin-bottom: 16px;
     text-transform: uppercase;
   }
+  .MapTitle h2 {
+    color: #747D82;
+    font: 16px/22px 'Open Sans';
+  }
+  .MapTitle h2 * {
+    color: #747D82;
+    font: 16px/22px 'Open Sans';
+    text-transform: none;
+  }
+
   .MapTitle p a {
     color: #1181FB;
   }
