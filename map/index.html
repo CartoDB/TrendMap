@@ -8,7 +8,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    
+
     <div class="CDB-Loader is-visible js-loader"></div>
 
     <div id="map"></div>
@@ -21,19 +21,15 @@
           <div class="brand">
             <img src="logo.svg" alt="TrendMap" width="200">
           </div>
-        </div>
-        <div class="MapInfo">
           <div class="MapTitle">
             <h1>
-              <a href="{{ link }}" target="_blank">
-                <span>{{ title }}</span>
-                <div class="MapTitle-tooltip">
-                  {{ title }}
-                </div>
-              </a>
+              <a href="{{ link }}" target="_blank">{{ title }}</a>
             </h1>
+            <h2> {{ description }} </h2>
+
             <p>BY <a href="http://{{ username }}.carto.com/" target="_blank"><strong>{{ username }}</strong></a></p>
           </div><!-- MapTitle-->
+
           <dl class="MapMetadata">
             {{#referrers}}
               <dd>AS SEEN ON <strong><a target="_blank" href="{{ referrers }}">THIS PAGE</a></strong></dd>
@@ -45,11 +41,15 @@
             <dt><strong>{{ lat }}ºN, {{ lon }}ºS</strong></dt>
             <dd>LOCATION</dd>
           </dl>
+          <a target="_blank" href="https://twitter.com/share?url=http://cartodb.github.io/TrendMap/map&text=Most visited CARTO map last hour" class="icon"><img src="twitter.svg" /></a>
+        </div>
+
+
+        <div class="MapInfo">
+
+
           <div class="MapRelations">
-            <ul>
-              <li><a target="_blank" href="https://twitter.com/share?url=http://cartodb.github.io/TrendMap/map&text=Most visited CARTO map last hour" class="icon"><img src="twitter.svg" /></a></li>
-              <li class="ButtonInner"><a href="{{ link }}" target="_blank" class="button"><strong>VIEW ON CARTO</strong></a></li>
-            </ul>
+            <a href="{{ link }}" class="CDB-Button CDB-Button--alert CDB-Button--big">VIEW ON CARTO</a>
           </div>
         </div>
 
