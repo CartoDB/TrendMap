@@ -8,10 +8,8 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="Loader">
-      <div class="Spinner"></div>
-      <div class="Loader-message">Loading map...</div>
-    </div>
+    
+    <div class="CDB-Loader is-visible js-loader"></div>
 
     <div id="map"></div>
 
@@ -51,7 +49,6 @@
             <ul>
               <li><a target="_blank" href="https://twitter.com/share?url=http://cartodb.github.io/TrendMap/map&text=Most visited CARTO map last hour" class="icon"><img src="twitter.svg" /></a></li>
               <li class="ButtonInner"><a href="{{ link }}" target="_blank" class="button"><strong>VIEW ON CARTO</strong></a></li>
-              <li><a href="." class="icon"><img src="refresh.svg" /></a></li>
             </ul>
           </div>
         </div>
@@ -127,7 +124,7 @@
       }
 
       function hideSpinner() {
-        $('.Loader').fadeOut('fast');
+        $('.js-loader').fadeOut('fast');
       }
       
       function startRefresh() {
